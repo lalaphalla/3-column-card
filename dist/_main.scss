@@ -1,0 +1,115 @@
+
+// Color
+// Primary
+$bright-orange: hsl(31, 77%, 52%);
+$dark-cyan: hsl(184, 100%, 22%);
+$dark-cyan2: hsl(179, 100%, 13%);
+// Neutral
+$trans-white: hsla(0, 0%, 100%, 0.75);
+$light-grey: hsl(0, 0%, 95%);
+// media
+// 640px 1024px 1400px
+// 820px 1024px 1400px
+$breakpoint-up: ("medium": "51em", "large": "64em", "xlarge": "87.5em");
+
+@mixin breakpoint-up($size){
+    @media (min-width: map-get($breakpoint-up, $size)){
+        @content;
+    }
+}
+
+
+// Globals
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body{
+    background-color: $light-grey;
+    text-align: center;
+    font-size: 15px;
+}
+.container{
+    width: 75%;
+    margin: 20px auto 10px ;
+    border-radius: 10px;
+    text-align: left;
+    display: grid;
+    grid-template-columns: 1fra;
+    
+    @include breakpoint-up(large){
+        margin: 40px auto 10px ;
+        grid-template-columns: repeat(3, 1fr);
+    }
+    
+    @include breakpoint-up(medium){
+        width: 90%;
+        grid-template-columns: repeat(3, 1fr);
+    }
+    .card{
+        padding: 48px;
+        font-family: 'Lexend Deca', sans-serif;
+        font-weight: 400;
+
+    }
+    .card1{
+        background-color: $bright-orange;
+        border-radius: 10px 10px 0 0;
+    }
+    .card2{
+        background-color: $dark-cyan;
+    }
+    .card3{ 
+        background-color: $dark-cyan2;
+        border-radius: 0 0 10px 10px;
+    }
+    .text h1{
+        margin: 20px 0;
+    }
+    .text p{
+        margin: 10px 0 40px 0;
+        color: $trans-white;
+    }
+    .btn{
+        width: 100%;
+        padding:20px 5px;
+        border-radius: 20px;
+        border: 1px solid #fff;
+        margin: 10px 0 10px ; 
+        font-weight: 700;
+        font-family: 'Lexend Deca', sans-serif;
+        &:hover{
+            cursor: pointer;
+        }
+    }
+    .btn1{
+        color: $bright-orange;
+        &:hover{
+            background-color: $bright-orange;
+            color: $trans-white;
+        }
+    }
+    .btn2{
+        color: $dark-cyan;
+        &:hover{
+            background-color: $dark-cyan;
+            color: $trans-white;
+        }
+    }
+    .btn3{
+        color: $dark-cyan2;
+        &:hover{
+            background-color: $dark-cyan2;
+            color: $trans-white;
+        }
+    }
+    @include breakpoint-up(medium){
+        .card1{
+            border-radius: 10px 0 0 10px;
+        }
+        .card3{
+            border-radius: 0 10px 10px 0;
+        }
+    }
+}
